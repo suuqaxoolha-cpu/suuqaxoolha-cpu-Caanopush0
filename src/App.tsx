@@ -1,28 +1,37 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Layout from './components/Layout';
-import Home from './pages/Home';
-import Projects from './pages/Projects';
-import About from './pages/About';
-import Login from './pages/auth/Login';
-import Register from './pages/auth/Register';
-import ForgotPassword from './pages/auth/ForgotPassword';
-import { ThemeProvider } from './context/ThemeContext';
+import { ShopProvider } from './context/ShopContext';
+import StoreLayout from './components/Layout';
+import DashboardLayout from './components/DashboardLayout';
+
+// Store Pages
+import StoreFront from './pages/Home';
+import CartPage from './pages/Cart';
+
+// Dashboard Pages
+import DashboardOverview from './pages/DashboardOverview';
+import AffiliateDashboard from './pages/AffiliateDashboard';
 
 export default function App() {
   return (
-    <ThemeProvider>
+    <ShopProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Login />} />
-            <Route path="home" element={<Home />} />
-            <Route path="projects" element={<Projects />} />
-            <Route path="about" element={<About />} />
-            <Route path="register" element={<Register />} />
-            <Route path="forgot-password" element={<ForgotPassword />} />
+          {/* Storefront Routes */}
+          <Route path="/" element={<StoreLayout />}>
+            <Route index element={<StoreFront />} />
+            <Route path="cart" element={<CartPage />} />
+          </Route>
+
+          {/* Dashboard Routes */}
+          <Route path="/dashboard" element={<DashboardLayout />}>
+            <Route index element={<DashboardOverview />} />
+            <Route path="affiliate" element={<AffiliateDashboard />} />
+            {/* Simple placeholders for other routes */}
+            <Route path="orders" element={<div className="p-6">Order History Coming Soon</div>} />
+            <Route path="settings" element={<div className="p-6">Settings Coming Soon</div>} />
           </Route>
         </Routes>
       </BrowserRouter>
-    </ThemeProvider>
+    </ShopProvider>
   );
 }
