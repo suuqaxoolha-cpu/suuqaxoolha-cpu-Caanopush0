@@ -1,6 +1,11 @@
 <div align="center">
 
-</div>
+</div>img 
+                src="https://i.postimg.cc/bYRkZ4XG/FB-IMG-1772278938922.jpg?auto=format&fit=crop&q=80&w=800" 
+                alt="Profile Workspace"
+                className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity duration-500 mix-blend-luminosity hover:mix-blend-normal"
+              />
+            </div>
 
 # Run
 
